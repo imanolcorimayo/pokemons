@@ -8,5 +8,28 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    idpokemon: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
+    },
+    lives: {
+      type: DataTypes.INTEGER,
+    },
+    strength: {
+      type: DataTypes.INTEGER,
+    },
+    speed: {
+      type: DataTypes.INTEGER,
+    },
+    defense: {
+      type: DataTypes.INTEGER,
+    },
+    height: {
+      type: DataTypes.INTEGER,
+    },
+    weight: {
+      type: DataTypes.INTEGER,
+    },
   });
 };
