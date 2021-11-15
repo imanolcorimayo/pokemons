@@ -9,7 +9,8 @@ module.exports = {
     firstReq: async function() {
 
         // obtengo el nombre del pokemon y otra url para mas info
-        var data = await axios.get('https://pokeapi.co/api/v2/pokemon') //axios devuelve el objeto
+        // var data = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=40') //ruta para traer 40 pokemons
+        var data = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=40') //axios devuelve el objeto
         .catch(err => {
             resp = err
         })
@@ -26,6 +27,8 @@ module.exports = {
                 data.data.results[i].types.push(el.data.types[j].type.name)
             }
             data.data.results[i].img =  el.data.sprites.front_default
+            data.data.results[i].force = el.data.stats[1].base_stat
+
             delete data.data.results[i].url //elimino el dato url innecesario
         })
 

@@ -1,0 +1,21 @@
+.divPrincipal {
+    display: block;
+    height: 50px;
+    background-color: rgba(137, 43, 226, 0.747);
+    box-shadow: 0px 1px 10px black;
+}
+
+.input {
+    position: absolute;
+    font-size: 15px;
+    border-radius: 5px;
+    height: 27px;
+    width: 250px;
+    right: 0px;
+    margin: 10px;
+    background-color: rgba(221, 221, 221, 0.904);
+}
+.button {
+    position: absolute;
+    right: 0px;
+}

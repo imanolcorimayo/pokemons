@@ -1,0 +1,25 @@
+.divPrincipal {
+    position: fixed;
+    top: 0px;
+    margin: 0;
+    width: 18vw;
+    left: 0px;
+    background-color: gainsboro;
+    height: 100vh;
+    z-index: -1;
+}
+
+.span {
+    display: block;
+    padding: 0px 5px;
+    margin: 2px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer
+}
+
+.firsth4 {
+    margin: 0px;
+    padding: 5px;
+    padding-top: 60px;
+}
