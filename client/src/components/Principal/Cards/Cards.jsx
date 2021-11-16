@@ -8,6 +8,7 @@ function Cards(props) {
     
     return (
         <div className={ styles.divPrincipal }>
+
             {
                 props.pokemons?.map((element, index) => {
                     return (
@@ -26,7 +27,7 @@ function Cards(props) {
 
 function mapStateToProps(state) {
     return {
-        pokemons: state.pokemons
+        pokemons: state.pokemonsShows
       };
 }
 

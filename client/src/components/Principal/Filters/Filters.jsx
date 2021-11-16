@@ -1,35 +1,65 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import styles from './Filters.module.css'
 
 import { connect } from 'react-redux'
-import { filterPokemons } from '../../../Actions'
+import { filterPokemons, getTypesPokemons } from '../../../Actions'
 
 function Filters(props) {
     
-    function alphabetic(el) {
+    
+
+    useEffect(() => {
+        async function get(){
+            await props.getTypes()
+        }
+        get()
+        console.log(props.types)
+        // eslint-disable-next-line
+    }, [])
+
+    function filter(el) {
         props.filterPokemons(el.target.id)
+        console.log(props.types)
     }
+
+    function typeFilter(el) {
+        props.filterPokemons(["type", props.types[el.target.id]])
+    }
+
+
     return (
         <div className={ styles.divPrincipal }>
             <h4 className={ styles.firsth4 }>Filtros:</h4>
-                <span id="alphabetic" className={ styles.span } onClick={ alphabetic }>alphabetic</span>
-                <span id="force" className={ styles.span } onClick={ alphabetic }>Force</span>
-                <span id="created" className={ styles.span } onClick={ alphabetic }>Created</span>
+                <span id="alphabetic" className={ styles.span } onClick={ filter }>alphabetic</span>
+                <span id="force" className={ styles.span } onClick={ filter }>Force</span>
+                <span id="created" className={ styles.span } onClick={ filter }>Created</span>
             <h4 className={ styles.h4 }>Tipo:</h4>
+            {
+                props.types.map(( el, i ) => {
+                    return (
+                        <span key={i} 
+                        id={ i } 
+                        className={ styles.span } 
+                        onClick={ typeFilter }>{ el }</span>
+                    )
+                })
+            }
         </div>
     )
 }
 
 function mapStateToProps(state) {
     return {
-      pokemons: state.pokemons
+      pokemons: state.pokemons,
+      types: state.types
     };
   }
   
 function mapDispatchToProps(dispatch) {
     return {
         filterPokemons: (arr) => dispatch(filterPokemons(arr)),
+        getTypes: () => dispatch(getTypesPokemons())
     };
 }
 

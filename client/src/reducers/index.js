@@ -1,9 +1,16 @@
-import { FILTER_POKEMONS, GET_DETAILS, GET_POKEMONS, SHOW_POKEMONS } from "../Actions";
+import { FILTER_POKEMONS, 
+    GET_DETAILS, GET_POKEMONS, 
+    SHOW_POKEMONS, 
+    GET_ONE_POKEMON, 
+    TURN_PAGES, 
+    GET_TYPES_POKEMONS} from "../Actions";
 
 const initialState = {
     pokemons: [],
     detailsPkm: [],
     pokemonsShows: [],
+    numberOfPages: 0,
+    types: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -15,8 +22,12 @@ function rootReducer(state = initialState, action) {
         }
     }
     if (action.type === GET_POKEMONS) {
+        let number = Math.ceil(action.payload.length / 8)
+        let shows = action.payload.slice(0, 8)
         return {
             ...state,
+            numberOfPages: number,
+            pokemonsShows: shows,
             pokemons: action.payload
         };
     }
@@ -27,20 +38,27 @@ function rootReducer(state = initialState, action) {
         };
     }
     if (action.type === FILTER_POKEMONS) {
-
+        let response
         //Filtrado por orden alfabetico
         if (action.payload === "alphabetic") {
             let aux = state.pokemons.map((el) => el.name)
             aux.sort()
-            var response1 = aux.map((el) => {
-                for(var i = 0; i < state.pokemons.length; i++) {
-                    if (state.pokemons[i].name === el) return state.pokemons[i]
+            response = aux.map((el) => {
+                for(let i = 0; i < state.pokemons.length; i++) {
+                    if (state.pokemons[i].name === el) {
+                        let a = state.pokemons[i]
+                        state.pokemons.splice(i,1)
+                        return a
+                    }
                 }
-                return state.pokemons[i].name
+                return {}
             })
+            //Modifico tambien los mostrados
+            let shows = response.slice(0, 8)
             return {
                 ...state,
-                pokemons: response1
+                pokemonsShows: shows,
+                pokemons: response
             };
 
         //Filtrado por fuerza
@@ -49,24 +67,69 @@ function rootReducer(state = initialState, action) {
             aux.sort((a,b) => {
                 return a-b
             })
-            var response = aux.map((el) => {
-                for(var i = 0; i < state.pokemons.length; i++) {
-                    if (state.pokemons[i].force === el) return state.pokemons[i]
+            response = aux.map((el) => {
+                for(let i = 0; i < state.pokemons.length; i++) {
+                    if (state.pokemons[i].force === el) {
+                        let a = state.pokemons[i]
+                        state.pokemons.splice(i,1)
+                        return a
+                    }
                 }
-                return state.pokemons[i]
+                return {}
             })
+
+            //Modifico tambien los mostrados
+            let shows = response.slice(0, 8)
+            
+
             return {
                 ...state,
+                pokemonsShows: shows,
                 pokemons: response
             };
+        
+        //Filtrado por creados
+
         } else if (action.payload === "created") {
             return state
 
+        // filtrado por tipos
+
+        } else if (action.payload[0] === "type") {
+            let shows = state.pokemons.filter((el) => {
+                return el.types.includes(action.payload[1])
+            })
+            return {
+                ...state,
+                pokemonsShows: shows,
+            }
         } else {
             return state
         }
         
     }
+    if (action.type === GET_ONE_POKEMON) {
+        let response = state.pokemons.filter((el) => el.name === action.payload)
+        return {
+            ...state,
+            pokemonsShows: response
+        }
+    }
+    if (action.type === TURN_PAGES) {
+        let response = state.pokemons.slice(action.payload[0], action.payload[1])
+        return {
+            ...state,
+            pokemonsShows: response
+        }
+    }
+    if (action.type === GET_TYPES_POKEMONS) {
+        return {
+            ...state,
+            types: action.payload
+        }
+    }
+
+
 
 
     return state;

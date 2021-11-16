@@ -191,8 +191,16 @@ module.exports = {
             console.log(pkmtypes)
 
             data = response;
+        } else {
+            let aux= data.map( el => el.name)
+            // for (let i = 0; i < data.length; i++) {
+            //     aux.push(data[i].name)
+            // }
+            // console.log(data)
+            data = aux
         }
-        return {data}
+
+        return data
     }
     
 }

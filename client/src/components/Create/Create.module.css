@@ -1,0 +1,27 @@
+.divPrincipal {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/hc_480x270/public/media/image/2016/08/pokemon-go-pokeball.jpg?itok=lytws823);
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+.form {
+    width: 70vw;
+    height: 80vh;
+    padding: 15px;
+    background-color: rgba(196, 196, 196, 0.351);
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 50px;
+    backdrop-filter: blur(15px);
+    box-shadow: 1px 1px 8px black;
+}
+
+.input {
+    display: block;
+    margin: auto;
+    margin-top: 7px;
+    margin-bottom: 15px;
+}
