@@ -11,6 +11,7 @@ export const FILTER_POKEMONS = "FILTER_POKEMONS"
 export const GET_ONE_POKEMON = "GET_ONE_POLEMON"
 export const TURN_PAGES = "TURN_PAGES"
 export const GET_TYPES_POKEMONS = "GET_TYPES_POKEMONS"
+export const INCREASE_ID_POKEMON = "INCREASE_ID_POKEMON"
 
 
 
@@ -64,5 +65,9 @@ export function filterPokemons(payload) {
 
 export function getOnePokemon(payload) {
   return { type: GET_ONE_POKEMON, payload };
+}
+
+export function increaseIdPokemon(payload) {
+  return { type: INCREASE_ID_POKEMON, payload };
 }
 

@@ -4,6 +4,8 @@ import styles from './Cards.module.css'
 
 import { connect } from 'react-redux'
 
+import { Link } from 'react-router-dom'
+
 function Cards(props) {
     
     return (
@@ -12,11 +14,13 @@ function Cards(props) {
             {
                 props.pokemons?.map((element, index) => {
                     return (
-                        <div key={ index } className={ styles.divCard }>
-                            <img src={ element.img } alt="" />
-                            <h3>{ element.name }</h3>
-                            <p>Description:</p>
-                        </div>
+                        <Link to={"/Details/" + element.id}>
+                            <div key={ index } className={ styles.divCard }>
+                                <img src={ element.img } alt="" />
+                                <h3>{ element.name }</h3>
+                                <p>Description:</p>
+                            </div>
+                        </Link>
                     )
                 })
                 

@@ -9,7 +9,6 @@ module.exports = {
     firstReq: async function() {
 
         // obtengo el nombre del pokemon y otra url para mas info
-        // var data = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=40') //ruta para traer 40 pokemons
         var data = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=40') //axios devuelve el objeto
         .catch(err => {
             resp = err
@@ -27,7 +26,11 @@ module.exports = {
                 data.data.results[i].types.push(el.data.types[j].type.name)
             }
             data.data.results[i].img =  el.data.sprites.front_default
+            data.data.results[i].lives = el.data.stats[0].base_stat
             data.data.results[i].force = el.data.stats[1].base_stat
+            data.data.results[i].defense = el.data.stats[2].base_stat
+            data.data.results[i].speed = el.data.stats[5].base_stat
+            data.data.results[i].id = el.data.id
 
             delete data.data.results[i].url //elimino el dato url innecesario
         })
@@ -41,7 +44,37 @@ module.exports = {
         //     delete data.data.results[i].url //elimino el dato url innecesario
         // }
 
-        return data.data.results
+        //Busco los existentes en base de datos
+        
+        const dataDB = await Pokemon.findAll({
+            include: Tipo,
+        })
+        console.log("FROM DATA BASE: ", dataDB)
+
+        let response = []
+        if(!!dataDB[0]) {
+            for (let i = 0; i < dataDB.length; i++) {
+                let types = [];
+                for(let j = 0; j < dataDB[i].tipos.length; j++) {
+                    types.push(dataDB[i].tipos[j].name)
+                }
+                let aux = {
+                    name: dataDB[i].name,
+                    types: types,
+                    img: "",
+                    lives: dataDB[i].lives,
+                    force: dataDB[i].strength,
+                    defense: dataDB[i].defense,
+                    speed: dataDB[i].speed,
+                    id: dataDB[i].idpokemon,
+                }
+                response.push(aux)
+            }
+        }
+
+        
+
+        return [...response, ...data.data.results]
     },
 
     // Obtener detalle del pokemon particular por id
@@ -125,15 +158,16 @@ module.exports = {
     // Crear un pokemon en DB
     createPkm: async function(data) {
         const {name,
-          idpokemon,
-          lives,
-          strength,
-          speed,
-          defense,
-          height,
-          weight } = data
+            idpokemon,
+            lives,
+            strength,
+            speed,
+            defense,
+            height,
+            weight,
+            types } = data
 
-        const pokemon = Pokemon.create({
+        const pokemon = await Pokemon.create({
             name,
             idpokemon,
             lives,
@@ -143,14 +177,12 @@ module.exports = {
             height,
             weight
         })
-        const message = await pokemon
-        .then(() => {
-            return {msg: "Creado con exito"}
-        })
-        .catch(err =>{
-            return {msg: "no pudo crearse: ", err}
-        })
-        return message
+
+        // Relaciones con los tipos
+
+        await pokemon.addTipos(types);
+
+        return pokemon
     },
     types: async function() {
 
@@ -193,10 +225,6 @@ module.exports = {
             data = response;
         } else {
             let aux= data.map( el => el.name)
-            // for (let i = 0; i < data.length; i++) {
-            //     aux.push(data[i].name)
-            // }
-            // console.log(data)
             data = aux
         }
 

@@ -20,7 +20,6 @@ function Filters(props) {
 
     function filter(el) {
         props.filterPokemons(el.target.id)
-        console.log(props.types)
     }
 
     function typeFilter(el) {

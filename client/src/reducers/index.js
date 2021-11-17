@@ -3,7 +3,8 @@ import { FILTER_POKEMONS,
     SHOW_POKEMONS, 
     GET_ONE_POKEMON, 
     TURN_PAGES, 
-    GET_TYPES_POKEMONS} from "../Actions";
+    GET_TYPES_POKEMONS,
+    INCREASE_ID_POKEMON} from "../Actions";
 
 const initialState = {
     pokemons: [],
@@ -11,6 +12,7 @@ const initialState = {
     pokemonsShows: [],
     numberOfPages: 0,
     types: [],
+    idPokemon: 1999,
 };
 
 function rootReducer(state = initialState, action) {
@@ -22,7 +24,7 @@ function rootReducer(state = initialState, action) {
         }
     }
     if (action.type === GET_POKEMONS) {
-        let number = Math.ceil(action.payload.length / 8)
+        let number = Math.floor(action.payload.length / 8)
         let shows = action.payload.slice(0, 8)
         return {
             ...state,
@@ -91,7 +93,13 @@ function rootReducer(state = initialState, action) {
         //Filtrado por creados
 
         } else if (action.payload === "created") {
-            return state
+            let shows = state.pokemons.filter((el) => {
+                return (el.id > 1000)
+            })
+            return {
+                ...state,
+                pokemonsShows: shows,
+            }
 
         // filtrado por tipos
 
@@ -126,6 +134,13 @@ function rootReducer(state = initialState, action) {
         return {
             ...state,
             types: action.payload
+        }
+    }
+    if (action.type === INCREASE_ID_POKEMON) {
+        let aux = state.idPokemon + 1
+        return {
+            ...state,
+            idPokemon: aux
         }
     }
 

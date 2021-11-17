@@ -25,3 +25,16 @@
     margin-top: 7px;
     margin-bottom: 15px;
 }
+
+.input2{
+    padding: 3px;
+    display: inline-block;
+}
+
+.h1mal{
+    font-size: 50px;
+    color: red;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+}
