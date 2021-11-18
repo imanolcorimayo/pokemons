@@ -1,7 +1,7 @@
 .divPrincipal {
     display: block;
-    height: 50px;
-    background-color: rgba(137, 43, 226, 0.747);
+    height: 55px;
+    background-color: rgb(86, 221, 158);
     box-shadow: 0px 1px 10px black;
 }
 
@@ -18,4 +18,19 @@
 .button {
     position: absolute;
     right: 0px;
+}
+
+.link {
+    /* position: absolute; */
+    font-size: larger;
+    color: black;
+    text-decoration: none;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.link:nth-child(1) {
+    position: absolute;
+    left: 15px;
+    border-right: 1px solid rgb(47, 56, 52);
 }

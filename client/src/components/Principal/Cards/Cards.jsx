@@ -16,9 +16,11 @@ function Cards(props) {
                     return (
                         <Link to={"/Details/" + element.id}>
                             <div key={ index } className={ styles.divCard }>
-                                <img src={ element.img } alt="" />
-                                <h3>{ element.name }</h3>
-                                <p>Description:</p>
+                                <img className={ styles.img } src={ element.img } alt="" />
+                                <div className={ styles.divTexto }>
+                                    <h3>{ element.name }</h3>
+                                    <p>Description:</p> 
+                                </div>
                             </div>
                         </Link>
                     )

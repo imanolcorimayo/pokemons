@@ -10,13 +10,13 @@ function Details(props) {
     let { idpkm } = useParams();
     console.log("que es esto:", idpkm)
     const [pokemon, setstate] = useState([])
-    setstate(props.pokemons.filter((el) => {
-        const { id } = el
-        console.log(id, parseInt(idpkm))
-        return id === parseInt(idpkm)
-    })) 
+    
     useEffect(() => {
-        
+        setstate(props.pokemons.filter(el => {
+            const { id } = el
+            console.log(id, parseInt(idpkm))
+            return id === parseInt(idpkm)
+        })) 
         // eslint-disable-next-line
     }, [])
     console.log(idpkm, pokemon, props.pokemons)
@@ -24,22 +24,22 @@ function Details(props) {
         <div className={ styles.divPrincipal }>
             <NavBar></NavBar>
             <div className={ styles.divContenedor }>
-                <h1>{ pokemon[0].name }</h1>
+                <h1>{ pokemon[0]?.name }</h1>
                 <div className={ styles.divImagen }>
-                    <img src={ pokemon[0].img } alt="" />
+                    <img src={ pokemon[0]?.img } alt="" />
                 </div>
                 <div className={ styles.divData }>
                     <span>Datos</span>
                     <br />
-                    <span>{ pokemon[0].lives }</span>
+                    <span>{ pokemon[0]?.lives }</span>
                     <br />
-                    <span>{ pokemon[0].defense }</span>
+                    <span>{ pokemon[0]?.defense }</span>
                     <br />
-                    <span>{ pokemon[0].speed }</span>
+                    <span>{ pokemon[0]?.speed }</span>
                     <br />
-                    <span>{ pokemon[0].force }</span>
+                    <span>{ pokemon[0]?.force }</span>
                     <br />
-                    <span>{ pokemon[0].lives }</span>
+                    <span>{ pokemon[0]?.lives }</span>
                     <br />
                     <span>Estadisticas</span>
                 </div>

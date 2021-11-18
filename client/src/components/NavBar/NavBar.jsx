@@ -20,14 +20,14 @@ function NavBar(props) {
 
     return (
         <div className={ styles.divPrincipal }>
-                <Link to="/Principal">Principal</Link>
+            <Link className={ styles.link } to="/Principal">Principal</Link>
             <input type="text" 
                 name="search" 
                 onChange={ handleInputChange } 
                 value={ search }
                 className={ styles.input } />
             <button className={ styles.button } onClick={ searchFunction }>Buscar Pokemon!</button>
-            <Link to="/Create">Crear Pokemon</Link>
+            <Link className={ styles.link } to="/Create">Crear Pokemon</Link>
         </div>
     )
 }
