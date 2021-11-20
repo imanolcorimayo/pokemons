@@ -53,7 +53,7 @@ function Principal(props) {
             <div>
                 { span }
             </div>
-            { loading ? <Loading/>:<Cards/> }
+            { loading ? <Loading className={ styles.loading } />:<Cards/> }
             <Filters></Filters>
         </div>
     )

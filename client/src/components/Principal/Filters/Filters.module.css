@@ -10,12 +10,17 @@
 }
 
 .span {
-    display: block;
+    display: inline-block;
     padding: 0px 5px;
+    width: 100px;
     margin: 2px;
     background-color: white;
     border-radius: 10px;
     cursor: pointer
+}
+
+span:hover {
+    background-color: rgb(187, 187, 187);
 }
 
 .firsth4 {

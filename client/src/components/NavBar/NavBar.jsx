@@ -34,7 +34,7 @@ function NavBar(props) {
                     onChange={ handleInputChange } 
                     value={ search }
                     className={ styles.input }
-                    placeholder=" Busca un pokemon"/>
+                    placeholder=" Search pokemon"/>
                 <button className={ styles.button } onClick={ searchFunction }>
                     <img src={ loupe } className={ styles.img } alt="" />
                 </button>

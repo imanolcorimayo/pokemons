@@ -9,7 +9,7 @@ module.exports = {
     firstReq: async function() {
 
         // obtengo el nombre del pokemon y otra url para mas info
-        var data = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=40') //axios devuelve el objeto
+        var data = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=70') //axios devuelve el objeto
         .catch(err => {
             resp = err
         })
