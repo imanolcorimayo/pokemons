@@ -1,36 +1,61 @@
 .divPrincipal {
-    display: block;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    width: 100vw;
     height: 55px;
-    background-color: rgb(86, 221, 158);
+    background-color: rgb(8, 49, 136);
     box-shadow: 0px 1px 10px black;
+    z-index: 5;
+}
+
+.img {
+    width: 24px;
+    padding-right: 5px;
+    position: relative;
+    top: 5px;
+    margin-top: -5px;
 }
 
 .input {
-    position: absolute;
     font-size: 15px;
     border-radius: 5px;
-    height: 27px;
-    width: 250px;
+    height: 35px;
+    width: 400px;
     right: 0px;
     margin: 10px;
-    background-color: rgba(221, 221, 221, 0.904);
+    border: none;
+    box-shadow: 0px 0px 3px rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.671);
 }
 .button {
-    position: absolute;
-    right: 0px;
+    position: relative;
+    left: -50px;
+    top: 2px;
+    background-color: rgba(186, 186, 186, 0);
+    border-radius: none;
+    border: none;
+    padding: 0px;
+}
+.button:hover {
+    cursor: pointer;
 }
 
 .link {
-    /* position: absolute; */
+    position: relative;
+    top: 0px;
+    left: 0px;
     font-size: larger;
     color: black;
     text-decoration: none;
-    padding-left: 15px;
-    padding-right: 15px;
+    margin: 8px ;
+    padding: 5px 15px;
+    background-color: rgb(131, 170, 228);
+    border-radius: 8px;
+    height: 31px;
+    box-shadow: 1px 1px 2px rgb(41, 41, 41);
 }
 
-.link:nth-child(1) {
-    position: absolute;
-    left: 15px;
-    border-right: 1px solid rgb(47, 56, 52);
+.link:hover {
+    background-color: rgb(235, 235, 235);
 }

@@ -16,23 +16,34 @@
     /* background-color: rgb(226, 226, 226); */
     border-top: 2px solid rgb(209, 209, 209);
     margin-bottom: 50px;
-    z-index: -1;
+    z-index: 1;
+}
+
+.p {
+    position: absolute;
+    bottom: 35px;
+    left: 40%;
+    font-weight: 900;
+
 }
 
 .img {
     position: relative;
+    width: 100px;
+    height: 100px;
     top: -40px;
     border-radius: 50px;
     background-color: rgb(206, 228, 194);
     box-shadow: 0px 2px 3px rgb(132, 148, 119);
     transition: all .5s;
+    z-index: 2;
 }
 
 .divCard {
-    margin: 1px;
+    margin: 15px;
     margin-bottom: 50px;
-    height: 200px;
-    width: 350px;
+    height: 150px;
+    width: 250px;
     border-radius: 2px;
     border: 1px solid rgb(211, 211, 211);
     box-shadow: 0px 0px 1px black;
@@ -41,7 +52,7 @@
 }
 
 .divCard:hover .img{
-    transform: scale(1.2) translate(-100%, 45%);
+    transform: scale(1.1) translate(-80%, 35%);
     
 }
 .divCard:hover{
@@ -49,5 +60,97 @@
     justify-self: end;
     border-radius: 15px;
     box-shadow: 1px 1px 50px rgb(136, 136, 136);
-    height: 350px;
+    height: 230px;
 }
+
+.detalles {
+    opacity: 0;
+    transition: all 0.4s;
+}
+
+.h3 {
+    font-size: 25px;
+    position: absolute;
+    margin-left: 15px;
+    top: -60px;
+    transition: all .5s;
+}
+
+.span {
+    position: relative;
+    display: inline-block;
+    font-size: 2px;
+    margin: 15x;
+    transition: all .5s;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(216, 216, 216);
+    border-radius: 15px;
+}
+
+.h3::first-letter {
+    text-transform: uppercase;
+}
+
+.divCard:hover .detalles {
+    opacity: 1;
+}
+.divCard:hover .height {
+    opacity: 1;
+}
+.divCard:hover .weight {
+    opacity: 1;
+}
+
+.divCard:hover .h3 {
+    top: -10px;
+}
+
+.divCard:hover .span {
+    transform: translate(0%, 280%);
+    margin: 10px;
+    font-size: medium ;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+.height {
+    font-size: medium;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(216, 216, 216);
+    border-radius: 15px;
+    position: absolute;
+    top: -90px;
+    left: 110px;
+    opacity: 0;
+    transition: all .4s;
+}
+.weight {
+    font-size: medium;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(216, 216, 216);
+    border-radius: 15px;
+    position: absolute;
+    top: -50px;
+    left: 110px;
+    opacity: 0;
+    transition: all .4s;
+}
+
+.imgDetails {
+    width: 15px;
+    padding-right: 5px;
+    position: relative;
+    top: 2px
+}
+.imgTypes {
+    width: 20px;
+    padding-right: 5px;
+    position: relative;
+    top: 5px
+}
+

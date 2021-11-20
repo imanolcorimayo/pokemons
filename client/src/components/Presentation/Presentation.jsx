@@ -13,7 +13,7 @@ export default function Presentation(props) {
             <div className={ styles.div1 }></div>
             <div className={ styles.divPrincipal }>
                 <h2 className={ styles.h2 }>Bienvenidos a la app de Pokemons!</h2>
-                <p className={ styles.p }>Esta es una página donde encontraras algunos de tus pokemons favoritos</p>
+                <p className={ styles.p }>aquí encontrarás algunos de tus pokemons favoritos</p>
                 <Link className={ styles.link } to="/Principal">
                     <button className={ styles.button }>
                         Quiero ver!

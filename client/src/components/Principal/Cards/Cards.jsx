@@ -6,7 +6,12 @@ import { connect } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 
+import height from '../../../img/height.png'
+import weight from '../../../img/weight-scale.png'
+import comprobado from '../../../img/comprobado.png'
+
 function Cards(props) {
+    console.log(props.pokemons)
     
     return (
         <div className={ styles.divPrincipal }>
@@ -14,12 +19,31 @@ function Cards(props) {
             {
                 props.pokemons?.map((element, index) => {
                     return (
-                        <Link to={"/Details/" + element.id}>
+                        <Link className={ styles.link } to={"/Details/" + element.id}>
                             <div key={ index } className={ styles.divCard }>
-                                <img className={ styles.img } src={ element.img } alt="" />
+                                { 
+                                    element.img ? (<img className={ styles.img } src={ element.img } alt="" />):
+                                    (<img className={ styles.img } src={ element.img } alt="" />)
+                                } 
                                 <div className={ styles.divTexto }>
-                                    <h3>{ element.name }</h3>
-                                    <p>Description:</p> 
+                                    <h3 className={ styles.h3 }>{ element.name }</h3>
+                                    <p className={ styles.p }>Types </p> 
+                                    {
+                                        element.types?.map(el => {
+                                            return (<>
+                                                <span className={ styles.detalles + " " + styles.span }>
+                                                    <img src={ comprobado } className={ styles.imgTypes } alt="" />
+                                                    { el } </span>
+                                                    </>)
+                                        })
+                                    }
+
+                                    <span className={ styles.height }>
+                                    <img src={height} className={ styles.imgDetails } alt="" />
+                                        height: { element.height } </span>
+                                    <span className={ styles.weight  }>
+                                        <img src={weight} className={ styles.imgDetails } alt="" />
+                                        weight: { element.weight } </span>
                                 </div>
                             </div>
                         </Link>

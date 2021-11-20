@@ -25,12 +25,14 @@ module.exports = {
             for (let j=0; j < el.data.types.length; j++) {
                 data.data.results[i].types.push(el.data.types[j].type.name)
             }
-            data.data.results[i].img =  el.data.sprites.front_default
+            data.data.results[i].img =  el.data.sprites.other.dream_world.front_default
             data.data.results[i].lives = el.data.stats[0].base_stat
             data.data.results[i].force = el.data.stats[1].base_stat
             data.data.results[i].defense = el.data.stats[2].base_stat
             data.data.results[i].speed = el.data.stats[5].base_stat
             data.data.results[i].id = el.data.id
+            data.data.results[i].height = el.data.height
+            data.data.results[i].weight = el.data.weight
 
             delete data.data.results[i].url //elimino el dato url innecesario
         })
@@ -67,6 +69,8 @@ module.exports = {
                     defense: dataDB[i].defense,
                     speed: dataDB[i].speed,
                     id: dataDB[i].idpokemon,
+                    height: dataDB[i].height,
+                    weight: dataDB[i].weight,
                 }
                 response.push(aux)
             }
@@ -138,7 +142,7 @@ module.exports = {
             return response
         }
 
-        //Como si existe en API, filtramos información
+        //Si existe en API, filtramos información
         response.name = name;
         response.types = pkmInfo.data.types;
         response.img = pkmInfo.data.sprites.front_default;
