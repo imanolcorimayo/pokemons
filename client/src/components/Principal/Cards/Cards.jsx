@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import height from '../../../img/height.png'
 import weight from '../../../img/weight-scale.png'
 import comprobado from '../../../img/comprobado.png'
+import interrogacion from '../../../img/interrogacion.png'
 
 function Cards(props) {
     console.log(props.pokemons)
@@ -23,7 +24,7 @@ function Cards(props) {
                             <div key={ index } className={ styles.divCard }>
                                 { 
                                     element.img ? (<img className={ styles.img } src={ element.img } alt="" />):
-                                    (<img className={ styles.img } src={ element.img } alt="" />)
+                                    (<img className={ styles.img } src={ interrogacion } alt="Not found" />)
                                 } 
                                 <div className={ styles.divTexto }>
                                     <h3 className={ styles.h3 }>{ element.name }</h3>
@@ -31,19 +32,21 @@ function Cards(props) {
                                     {
                                         element.types?.map(el => {
                                             return (<>
-                                                <span className={ styles.detalles + " " + styles.span }>
+                                                <span key={ el + props.pokemons.length } className={ styles.detalles + " " + styles.span }>
                                                     <img src={ comprobado } className={ styles.imgTypes } alt="" />
-                                                    { el } </span>
-                                                    </>)
+                                                    { el } 
+                                                </span>
+                                            </>)
                                         })
                                     }
-
                                     <span className={ styles.height }>
-                                    <img src={height} className={ styles.imgDetails } alt="" />
-                                        height: { element.height } </span>
+                                        <img src={height} className={ styles.imgDetails } alt="" />
+                                            height: { element.height } 
+                                    </span>
                                     <span className={ styles.weight  }>
                                         <img src={weight} className={ styles.imgDetails } alt="" />
-                                        weight: { element.weight } </span>
+                                        weight: { element.weight } 
+                                    </span>
                                 </div>
                             </div>
                         </Link>

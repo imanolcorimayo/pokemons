@@ -10,11 +10,14 @@ function Filters(props) {
     
 
     useEffect(() => {
-        async function get(){
-            await props.getTypes()
+        if (!props.types[0]) {
+            async function get(){
+                await props.getTypes()
+            }
+            get()
         }
-        get()
-        console.log(props.types)
+        
+        // console.log(props.types)
         // eslint-disable-next-line
     }, [])
 

@@ -13,18 +13,30 @@ import { connect } from 'react-redux'
 
 function Principal(props) {
 
-    let gPkm = props.getPokemons 
+    // let gPkm = props.getPokemons 
 
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        setLoading(true)
-        async function getPokemons(){
-            await gPkm().then(() => {
-                setLoading(false)
-            }).catch(()=>console.log("errorrrr"))
+        // setLoading(true)
+        //Comprobamos si props.pokemons tiene algo
+
+        if(!props.pokemons[0]) {
+            setLoading(true)
+            async function wait() {
+                await props.getPokemons()
+            }
+            wait()
+                // props.getPokemons()
+            setLoading(false)
         }
-        getPokemons()
+        
+        // async function getPokemons(){
+        //     await gPkm().then(() => {
+        //         setLoading(false)
+        //     }).catch(()=>console.log("errorrrr"))
+        // }
+        // getPokemons()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

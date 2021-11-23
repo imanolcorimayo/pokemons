@@ -17,9 +17,77 @@
 
 .divImagen{
     position: absolute;
+    left: 50px;
+    top: 200px;
+}
+
+.img{
     width: 20vw;
 }
 
+.h1 {
+    position: relative;
+    left: -450px;
+    top: 100px;
+}
+
+.h1::first-letter {
+    text-transform: uppercase;
+}
+
 .divData {
-    background-color: rgb(121, 121, 121);
+    background-color: rgb(199, 199, 199);
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px rgba(0, 17, 255, 0.616);
+    width: 50vw;
+    height: 30vw;
+    position: absolute;
+    right: 50px;
+}
+
+.spanStats{
+    font-size: 30px;
+    font-weight: 700;
+    position: absolute;
+    top: 50px;
+    right: 450px;
+}
+
+.p {
+    display: inline-block;
+    padding-right: 50px;
+    font-size: 20px;
+}
+
+.span {
+    padding-left: 15px;
+    font-weight: 900;
+}
+
+.height {
+    font-size: medium;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+    position: relative;
+    top: 30px;
+    font-size: 20px;
+    left: -30px;
+}
+.weight {
+    font-size: medium;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+    position: relative;
+    top: 30px;
+    left: 50px;
+    font-size: 20px;
+}
+
+.imgDetails {
+    height: 30px;
+    padding-right: 15px;
+    position: relative;
+    top: 9px
 }

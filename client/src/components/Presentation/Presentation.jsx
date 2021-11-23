@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import styles from './Presentation.module.css'
-// import { connect } from 'react-redux'
-// import { getPokemons } from '../../Actions'
+import { connect } from 'react-redux'
+import { getPokemons, getTypesPokemons } from '../../Actions'
 
 import { Link } from 'react-router-dom'
 
-export default function Presentation(props) {
+function Presentation(props) {
+
+    useEffect(() => {
+        props.getPokemons()
+        props.getTypes()
+    })
+
     return (
 
         <div>
@@ -24,19 +30,20 @@ export default function Presentation(props) {
         
     )
 }
-// function mapStateToProps(state) {
-//     return {
-//       pokemons: state.pokemons
-//     };
-//   }
-  
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         getPokemons: () => dispatch(getPokemons()),
-//     };
-// }
+function mapStateToProps(state) {
+    return {
+      pokemons: state.pokemons
+    };
+  }
 
-// export default connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-// )(Presentation);
+function mapDispatchToProps(dispatch) {
+    return {
+        getPokemons: () => dispatch(getPokemons()),
+        getTypes: () => dispatch(getTypesPokemons())
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Presentation);

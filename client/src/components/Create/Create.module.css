@@ -8,13 +8,15 @@
 }
 
 .form {
+    position: relative;
+    top: 100px;
     width: 70vw;
     height: 80vh;
     padding: 15px;
     background-color: rgba(196, 196, 196, 0.351);
     border-radius: 5px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 0px;
     backdrop-filter: blur(15px);
     box-shadow: 1px 1px 8px black;
 }
@@ -24,17 +26,167 @@
     margin: auto;
     margin-top: 7px;
     margin-bottom: 15px;
+    font-size: 15px;
+    border-radius: 5px;
+    height: 35px;
+    width: 400px;
+    right: 0px;
+    margin: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.671);
 }
+
+.input:invalid:required {
+    border: 2px solid red;
+}
+
+.input[type=range] {
+    height: 32px;
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.input[type=range]:focus {
+    outline: none;
+}
+
+/* Estilos de la barra */
+.input[type=range]::-webkit-slider-runnable-track {
+    width: 50%;
+    height: 13px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px #000000;
+    background: #B6B6B6;
+    border-radius: 25px;
+    border: 1px solid #8A8A8A;
+}
+
+/* Estilos del boton */
+.input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 1px #828282;
+    border: 1px solid #8A8A8A;
+    height: 30px;
+    width: 20px;
+    border-radius: 6px;
+    background: #DADADA;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -10px;
+}
+
+.input[type=range]:focus::-webkit-slider-runnable-track {
+    background: rgb(131, 170, 228);
+}
+
+.input[type=range]:focus::-webkit-slider-thumb {
+    background: rgb(79, 139, 230);
+    border: .5px solid rgb(94, 94, 94);
+    box-shadow: 0px 0px 5px rgb(0, 90, 216);
+}
+
 
 .input2{
     padding: 3px;
-    display: inline-block;
+    width: 50px;
+    justify-self: flex-end;
 }
 
-.h1mal{
-    font-size: 50px;
-    color: red;
+.label {
+    font-weight: 900;
+    font-size: large;
+    padding: 2px 15px;
+    background-color: rgba(255, 247, 136, 0.466);
+    border-radius: 5px;
+
+}
+
+.spanValidateOk{
+    font-size: 15px;
+    color: rgb(43, 255, 0);
+    text-shadow: 0px 0px 2px rgb(49, 133, 28);
     position: absolute;
-    top: 50vh;
-    left: 50vw;
+    top: 85px;
+    left: 10px;
+    background-color: rgba(134, 255, 123, 0.405);
+    border-radius: 10px;
+}
+
+.spanValidateWrong{
+    font-size: 15px;
+    color: red;
+    text-shadow: 0px 0px 2px rgb(172, 6, 6);
+    position: absolute;
+    top: 85px;
+    left: 10px;
+    background-color: rgba(255, 123, 123, 0.405);
+    border-radius: 10px;
+}
+
+.divTypes {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.divTypesPadre {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 40vw;
+    position: absolute;
+    right: -80px;
+    top: 100px;
+}
+
+.first {
+    position: absolute;
+    top: 25px;
+    left: 50px;
+}
+
+.button {
+    position: absolute;
+    bottom: 50px;
+    left: calc(73% - 75px);
+    font-size: larger;
+    color: black;
+    margin: auto;
+    padding: 5px 15px;
+    background-color: rgb(131, 170, 228);
+    border-radius: 8px;
+    height: 41px;
+    width: 150px;
+    box-shadow: 1px 1px 2px rgb(41, 41, 41);
+    transition: all .5s;
+}
+
+.button:hover {
+    background-color: rgb(235, 235, 235);
+    cursor: pointer;
+    left: calc(73% - 100px);
+    height: 51px;
+    width: 200px;
+    border-radius: 20px;
+    font-weight: 900;
+}
+
+.img {
+    position: relative;
+    top: 6px;
+    width: 25px;
+    padding-right: 15px;
+    filter: grayscale(1);
+}
+
+.divMessage{ 
+    background-color: rgba(38, 38, 38, 0.809);
+    backdrop-filter: blur(4);
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
 }

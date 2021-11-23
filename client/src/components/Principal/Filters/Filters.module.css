@@ -19,7 +19,7 @@
     cursor: pointer
 }
 
-span:hover {
+.span:hover {
     background-color: rgb(187, 187, 187);
 }
 
