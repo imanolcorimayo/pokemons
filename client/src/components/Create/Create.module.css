@@ -180,13 +180,52 @@
     filter: grayscale(1);
 }
 
-.divMessage{ 
+.divMessageFather{ 
     background-color: rgba(38, 38, 38, 0.809);
-    backdrop-filter: blur(4);
+    backdrop-filter: blur(15px);
     position: absolute;
     top: 0px;
     width: 100vw;
     height: 100vh;
     padding: 0px;
     margin: 0px;
+}
+
+.divMessage {
+    width: 30%;
+    height: 35%;
+    background-color: white;
+    position: relative;
+    top: 30vh;
+    margin: auto;
+    border-radius: 10px;
+    border: 3px solid rgb(97, 97, 97);
+    box-shadow: 2px 2px 15px rgb(0, 0, 0);
+}
+
+.buttonAnother, .buttonToHome {
+    font-size: larger;
+    color: black;
+    margin: auto;
+    padding: 5px 15px;
+    background-color: rgb(131, 170, 228);
+    border-radius: 8px;
+    height: 41px;
+    width: 150px;
+    box-shadow: 1px 1px 2px rgb(41, 41, 41);
+    transition: all .5s;
+    padding: 0px 5px;
+    margin: 0px 15px;
+    position: relative;
+    top: 90px;
+
+}
+
+.buttonAnother:hover, .buttonToHome:hover {
+    background-color: rgb(235, 235, 235);
+    cursor: pointer;
+    height: 51px;
+    width: 200px;
+    border-radius: 20px;
+    font-weight: 900;
 }

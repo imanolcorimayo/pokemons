@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import styles from './Create.module.css'
 
+import { Link } from 'react-router-dom'
+
 import NavBar from '../NavBar/NavBar'
 import { connect } from 'react-redux'
 import { getPokemons, increaseIdPokemon } from '../../Actions'
@@ -12,6 +14,7 @@ function Create(props) {
 
     const [namesPokemons, setnamesPokemons] = useState([])
     const [exists, setexists] = useState(false)
+    const [formSent, setformSent] = useState(false)
     const [state, setstate] = useState({
         name: "",
         lives: 0,
@@ -82,8 +85,10 @@ function Create(props) {
     function createPokemon(event) {
         //Me fijo si los datos del name son correctos
         if(namesPokemons.includes(state.name)){
+            event.preventDefault()
             return alert("Something is wrong with your form")
         }
+        setformSent(true)
         //Decido hacerlo con un estado global para que no se reinicie cada vez que se destruye el componenete
         props.increase()
         let body = {
@@ -105,6 +110,24 @@ function Create(props) {
         //Pido de nuevo un get para que se actualicen los pokemons
         event.preventDefault();
     };
+
+    function another() {
+        setstate({
+            name: "",
+            lives: 0,
+            strength: 0,
+            speed: 0,
+            defense: 0,
+            height: 0,
+            weight: 0,
+            types: []
+        })
+        setformSent(false)
+    }
+
+
+
+
     return (
         <div className={ styles.divPrincipal }>
             <NavBar></NavBar>
@@ -175,11 +198,25 @@ function Create(props) {
                 </div>
                 <input className={ styles.button } type="submit" value="CREAR"/>
             </form>
-            {/* <div className={ styles.divMessage }>
-                    <div>
-
+            {
+                formSent ? (
+                    <div className={ styles.divMessageFather }>
+                        <div className={ styles.divMessage }>
+                            <h2>Pokemon created</h2>
+                            <span>!!congratulations!!</span>
+                            <button className={ styles.buttonAnother } onClick={ another }>
+                                Create another
+                            </button>
+                            <Link to="/Principal">
+                                <button className={ styles.buttonToHome }>
+                                    Go to home
+                                </button>
+                            </Link>
+                        </div>
                     </div>
-            </div> */}
+                ) : (<></>)
+                
+            }
         </div>
     )
 }
