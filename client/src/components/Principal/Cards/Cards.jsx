@@ -12,7 +12,6 @@ import comprobado from '../../../img/comprobado.png'
 import interrogacion from '../../../img/interrogacion.png'
 
 function Cards(props) {
-    console.log(props.pokemons)
     
     return (
         <div className={ styles.divPrincipal }>

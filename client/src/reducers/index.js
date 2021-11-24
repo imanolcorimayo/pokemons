@@ -24,8 +24,8 @@ function rootReducer(state = initialState, action) {
         }
     }
     if (action.type === GET_POKEMONS) {
-        let number = Math.floor(action.payload.length / 8)
-        let shows = action.payload.slice(0, 8)
+        let number = Math.floor((action.payload.length - 9) / 12 + 1)
+        let shows = action.payload.slice(0, 9)
         return {
             ...state,
             numberOfPages: number,
@@ -56,7 +56,7 @@ function rootReducer(state = initialState, action) {
                 return {}
             })
             //Modifico tambien los mostrados
-            let shows = response.slice(0, 8)
+            let shows = response.slice(0, 9)
             return {
                 ...state,
                 pokemonsShows: shows,
@@ -81,7 +81,7 @@ function rootReducer(state = initialState, action) {
             })
 
             //Modifico tambien los mostrados
-            let shows = response.slice(0, 8)
+            let shows = response.slice(0, 9)
             
 
             return {

@@ -9,6 +9,7 @@ import { useParams } from 'react-router'
 import interrogacion from '../../img/interrogacion.png'
 import weight from '../../img/weight-scale.png'
 import height from '../../img/height.png'
+import finger from '../../img/fingerprint-solid.svg'
 
 function Details(props) {
     let { idpkm } = useParams();
@@ -70,6 +71,10 @@ function Details(props) {
                     <span className={styles.weight}>
                         <img src={ weight } className={styles.imgDetails} alt="" />
                         weight: { pokemon[0]?.weight }
+                    </span>
+                    <span className={styles.id}>
+                        <img src={ finger } className={styles.imgDetails} alt="" />
+                        ID: { pokemon[0]?.id }
                     </span>
                 </div>
             </div>

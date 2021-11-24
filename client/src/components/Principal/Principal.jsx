@@ -13,31 +13,22 @@ import { connect } from 'react-redux'
 
 function Principal(props) {
 
-    // let gPkm = props.getPokemons 
-
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        // setLoading(true)
+        setLoading(true)
         //Comprobamos si props.pokemons tiene algo
-
         if(!props.pokemons[0]) {
-            setLoading(true)
             async function wait() {
                 await props.getPokemons()
+                setLoading(false)
+
             }
             wait()
-                // props.getPokemons()
+        } else {
             setLoading(false)
         }
-        
-        // async function getPokemons(){
-        //     await gPkm().then(() => {
-        //         setLoading(false)
-        //     }).catch(()=>console.log("errorrrr"))
-        // }
-        // getPokemons()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line
     }, [])
 
     let span = []
@@ -48,15 +39,20 @@ function Principal(props) {
                 <span key={ j } 
                       className={ styles.span }
                       id={j}
-                      onClick={fPages}>{j + 1}</span>
+                      onClick={fPages}>{j + 1}
+                </span>
             )
         )
     }
     
     function fPages(el){
-        console.log(el.target.id)
-        let arr = [el.target.id * 9, el.target.id * 9 + 8];
-        props.tPages(arr);
+        console.log()
+        if("" + el.target.id === "0") {
+            props.tPages([0, 9]);
+        } else {
+            let arr = [el.target.id * 12 + 9, el.target.id * 12 + 12 + 9];
+            props.tPages(arr);
+        }
     }
 
     return (
@@ -65,11 +61,13 @@ function Principal(props) {
             <div>
                 { span }
             </div>
-            { loading ? <Loading className={ styles.loading } />:<Cards/> }
+            { loading ? <Loading/>:<Cards/> }
             <Filters></Filters>
         </div>
     )
 }
+
+//Redux
 function mapStateToProps(state) {
     return {
       numberOfPages: state.numberOfPages,
