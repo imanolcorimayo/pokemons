@@ -19,6 +19,22 @@
     cursor: pointer
 }
 
+.reset {
+    display: inline-block;
+    padding: 0px 10px;
+    width: 150px;
+    margin: 2px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    top: 50px;
+}
+
+.reset:hover {
+    background-color: rgb(255, 171, 171);
+}
+
 .span:hover {
     background-color: rgb(187, 187, 187);
 }

@@ -50,7 +50,8 @@ function Principal(props) {
         if("" + el.target.id === "0") {
             props.tPages([0, 9]);
         } else {
-            let arr = [el.target.id * 12 + 9, el.target.id * 12 + 12 + 9];
+            let arr = [(el.target.id - 1) * 12 + 9, (el.target.id - 1) * 12 + 12 + 9];
+            console.log(arr)
             props.tPages(arr);
         }
     }

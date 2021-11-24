@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import styles from './Filters.module.css'
 
 import { connect } from 'react-redux'
-import { filterPokemons, getTypesPokemons } from '../../../Actions'
+import { filterPokemons, getTypesPokemons, reset } from '../../../Actions'
 
 function Filters(props) {
     
@@ -29,6 +29,9 @@ function Filters(props) {
         props.filterPokemons(["type", props.types[el.target.id]])
     }
 
+    function reset() {
+        props.reset()
+    }
 
     return (
         <div className={ styles.divPrincipal }>
@@ -47,6 +50,7 @@ function Filters(props) {
                     )
                 })
             }
+            <span className={ styles.reset } onClick={ reset }>RESET</span>
         </div>
     )
 }
@@ -61,7 +65,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         filterPokemons: (arr) => dispatch(filterPokemons(arr)),
-        getTypes: () => dispatch(getTypesPokemons())
+        getTypes: () => dispatch(getTypesPokemons()),
+        reset: () => dispatch(reset())
     };
 }
 

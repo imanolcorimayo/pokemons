@@ -12,6 +12,7 @@ export const GET_ONE_POKEMON = "GET_ONE_POLEMON"
 export const TURN_PAGES = "TURN_PAGES"
 export const GET_TYPES_POKEMONS = "GET_TYPES_POKEMONS"
 export const INCREASE_ID_POKEMON = "INCREASE_ID_POKEMON"
+export const RESET = "RESET"
 
 
 
@@ -69,5 +70,9 @@ export function getOnePokemon(payload) {
 
 export function increaseIdPokemon(payload) {
   return { type: INCREASE_ID_POKEMON, payload };
+}
+
+export function reset(payload) {
+  return { type: RESET, payload };
 }
 

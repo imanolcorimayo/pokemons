@@ -4,7 +4,9 @@ import { FILTER_POKEMONS,
     GET_ONE_POKEMON, 
     TURN_PAGES, 
     GET_TYPES_POKEMONS,
-    INCREASE_ID_POKEMON} from "../Actions";
+    INCREASE_ID_POKEMON,
+    RESET,
+} from "../Actions";
 
 const initialState = {
     pokemons: [],
@@ -13,6 +15,7 @@ const initialState = {
     numberOfPages: 0,
     types: [],
     idPokemon: 1999,
+    pokemonBackUp: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -24,13 +27,14 @@ function rootReducer(state = initialState, action) {
         }
     }
     if (action.type === GET_POKEMONS) {
-        let number = Math.floor((action.payload.length - 9) / 12 + 1)
+        let number = Math.floor(((action.payload.length - 9) / 12) + 2)
         let shows = action.payload.slice(0, 9)
         return {
             ...state,
             numberOfPages: number,
             pokemonsShows: shows,
-            pokemons: action.payload
+            pokemons: action.payload,
+            pokemonBackUp: JSON.parse(JSON.stringify(action.payload)),
         };
     }
     if (action.type === SHOW_POKEMONS) {
@@ -83,7 +87,6 @@ function rootReducer(state = initialState, action) {
             //Modifico tambien los mostrados
             let shows = response.slice(0, 9)
             
-
             return {
                 ...state,
                 pokemonsShows: shows,
@@ -104,12 +107,15 @@ function rootReducer(state = initialState, action) {
         // filtrado por tipos
 
         } else if (action.payload[0] === "type") {
-            let shows = state.pokemons.filter((el) => {
+            state.pokemons = JSON.parse(JSON.stringify(state.pokemonBackUp))
+            let response = state.pokemons.filter((el) => {
                 return el.types.includes(action.payload[1])
             })
+            let shows = response.slice(0, 9)
             return {
                 ...state,
                 pokemonsShows: shows,
+                pokemons: response
             }
         } else {
             return state
@@ -124,6 +130,7 @@ function rootReducer(state = initialState, action) {
         }
     }
     if (action.type === TURN_PAGES) {
+        console.log(state.pokemons)
         let response = state.pokemons.slice(action.payload[0], action.payload[1])
         return {
             ...state,
@@ -141,6 +148,14 @@ function rootReducer(state = initialState, action) {
         return {
             ...state,
             idPokemon: aux
+        }
+    }
+    if (action.type === RESET) {
+        let shows = state.pokemonBackUp.slice(0, 9)
+        return {
+            ...state,
+            pokemons: JSON.parse(JSON.stringify(state.pokemonBackUp)),
+            pokemonsShows: shows
         }
     }
 
