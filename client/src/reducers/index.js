@@ -45,8 +45,8 @@ function rootReducer(state = initialState, action) {
     }
     if (action.type === FILTER_POKEMONS) {
         let response
-        //Filtrado por orden alfabetico
-        if (action.payload === "alphabetic") {
+        //Filtrado por orden alfabetico ascendente
+        if (action.payload === "alphabeticAsc") {
             let aux = state.pokemons.map((el) => el.name)
             aux.sort()
             response = aux.map((el) => {
@@ -66,9 +66,33 @@ function rootReducer(state = initialState, action) {
                 pokemonsShows: shows,
                 pokemons: response
             };
-
-        //Filtrado por fuerza
-        } else if(action.payload === "force") {
+        
+        }  
+        //Filtrado por orden alfabetico descendente
+        else if (action.payload === "alphabeticDesc") { 
+            let aux = state.pokemons.map((el) => el.name)
+            aux.sort()
+            let responseAux = aux.map((el) => {
+                for(let i = 0; i < state.pokemons.length; i++) {
+                    if (state.pokemons[i].name === el) {
+                        let a = state.pokemons[i]
+                        state.pokemons.splice(i,1)
+                        return a
+                    }
+                }
+                return {}
+            })
+            response = responseAux.reverse()
+            //Modifico tambien los mostrados
+            let shows = response.slice(0, 9)
+            return {
+                ...state,
+                pokemonsShows: shows,
+                pokemons: response
+            };
+        }
+        //Filtrado por fuerza ascendente
+        else if(action.payload === "forceAsc") {
             let aux = state.pokemons.map((el) => el.force)
             aux.sort((a,b) => {
                 return a-b
@@ -92,10 +116,35 @@ function rootReducer(state = initialState, action) {
                 pokemonsShows: shows,
                 pokemons: response
             };
-        
+        } 
+        //Filtrado por fuerza descendente
+        else if (action.payload === "forceDesc") {
+            let aux = state.pokemons.map((el) => el.force)
+            aux.sort((a,b) => {
+                return a-b
+            })
+            let responseAux = aux.map((el) => {
+                for(let i = 0; i < state.pokemons.length; i++) {
+                    if (state.pokemons[i].force === el) {
+                        let a = state.pokemons[i]
+                        state.pokemons.splice(i,1)
+                        return a
+                    }
+                }
+                return {}
+            })
+            response = responseAux.reverse();
+            //Modifico tambien los mostrados
+            let shows = response.slice(0, 9)
+            
+            return {
+                ...state,
+                pokemonsShows: shows,
+                pokemons: response
+            };
+        }
         //Filtrado por creados
-
-        } else if (action.payload === "created") {
+         else if (action.payload === "created") {
             let shows = state.pokemons.filter((el) => {
                 return (el.id > 1000)
             })

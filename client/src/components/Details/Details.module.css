@@ -23,13 +23,13 @@
 
 .img{
     width: 20vw;
-    height: 50vh;
+    height: 45vh;
 }
 
 .h1 {
     position: relative;
-    left: -450px;
-    top: 100px;
+    left: -27vw;
+    top: 10vh;
 }
 
 .h1::first-letter {
@@ -41,7 +41,7 @@
     border-radius: 50px;
     box-shadow: 0px 0px 5px rgba(0, 17, 255, 0.616);
     width: 50vw;
-    height: 30vw;
+    height: 55vh;
     position: absolute;
     right: 50px;
 }
@@ -50,8 +50,8 @@
     font-size: 30px;
     font-weight: 700;
     position: absolute;
-    top: 50px;
-    right: 450px;
+    top: 5vh;
+    right: 28vw;
 }
 
 .p {
@@ -92,8 +92,8 @@
     padding-right: 10px;
     border-radius: 15px;
     position: absolute;
-    bottom: 70px;
-    right: 350px;
+    bottom: 7vh;
+    right: 20vw;
     font-size: 20px;
 }
 

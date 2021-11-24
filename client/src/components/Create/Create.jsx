@@ -203,7 +203,7 @@ function Create(props) {
                     <div className={ styles.divMessageFather }>
                         <div className={ styles.divMessage }>
                             <h2>Pokemon created</h2>
-                            <span>!!congratulations!!</span>
+                            <span className={ styles.congrats }>Congratulations!!</span>
                             <button className={ styles.buttonAnother } onClick={ another }>
                                 Create another
                             </button>

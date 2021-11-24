@@ -36,8 +36,10 @@ function Filters(props) {
     return (
         <div className={ styles.divPrincipal }>
             <h4 className={ styles.firsth4 }>Filters:</h4>
-                <span id="alphabetic" className={ styles.span } onClick={ filter }>alphabetic</span>
-                <span id="force" className={ styles.span } onClick={ filter }>Force</span>
+                <span id="alphabeticAsc" className={ styles.span } onClick={ filter }>Asc Alphabetic</span>
+                <span id="alphabeticDesc" className={ styles.span } onClick={ filter }>Desc Alphabetic</span>
+                <span id="forceAsc" className={ styles.span } onClick={ filter }>Asc Force</span>
+                <span id="forceDesc" className={ styles.span } onClick={ filter }>Desc Force</span>
                 <span id="created" className={ styles.span } onClick={ filter }>Created</span>
             <h4 className={ styles.h4 }>Types:</h4>
             {

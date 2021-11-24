@@ -192,8 +192,8 @@
 }
 
 .divMessage {
-    width: 30%;
-    height: 35%;
+    width: 40%;
+    height: 30%;
     background-color: white;
     position: relative;
     top: 30vh;
@@ -228,4 +228,12 @@
     width: 200px;
     border-radius: 20px;
     font-weight: 900;
+}
+
+.congrats {
+    font-size: 40px;
+    position: absolute;
+    left: 20%;
+    color: rgb(80, 201, 0);
+    text-shadow: 1px 1px 5px rgb(138, 138, 138);
 }
