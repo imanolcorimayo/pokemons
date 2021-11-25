@@ -10,6 +10,7 @@ import interrogacion from '../../img/interrogacion.png'
 import weight from '../../img/weight-scale.png'
 import height from '../../img/height.png'
 import finger from '../../img/fingerprint-solid.svg'
+import comprobado from '../../img/comprobado.png'
 
 function Details(props) {
     let { idpkm } = useParams();
@@ -76,6 +77,19 @@ function Details(props) {
                         <img src={ finger } className={styles.imgDetails} alt="" />
                         ID: { pokemon[0]?.id }
                     </span>
+                    <div className={ styles.divTypes }>
+                        {
+                            pokemon[0]?.types.map((el, index) => {
+                                return (
+                                    <div>
+                                        <img className={ styles.imgDetails } src={ comprobado } alt="" />
+                                        <span key={ index } className={ styles.spanTypes }>{el}</span>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    
                 </div>
             </div>
         </div>

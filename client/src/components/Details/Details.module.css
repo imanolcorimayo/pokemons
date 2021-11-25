@@ -103,3 +103,18 @@
     position: relative;
     top: 9px
 }
+
+.spanTypes{
+    font-size: medium;
+    border-radius: 15px;
+    font-size: 20px;
+}
+
+.divTypes {
+    display: flex;
+    width: 30vw;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 5px;
+    right: calc(50% - 15vw);
+}

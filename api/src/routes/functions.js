@@ -25,6 +25,8 @@ module.exports = {
             for (let j=0; j < el.data.types.length; j++) {
                 data.data.results[i].types.push(el.data.types[j].type.name)
             }
+            // el.data.types.forEach((el) => data.data.results[i].types.push(el.type.name))
+
             data.data.results[i].img =  el.data.sprites.other.dream_world.front_default
             data.data.results[i].lives = el.data.stats[0].base_stat
             data.data.results[i].force = el.data.stats[1].base_stat
@@ -76,9 +78,7 @@ module.exports = {
             }
         }
 
-        
-
-        return [...response, ...data.data.results]
+        return [...data.data.results, ...response]
     },
 
     // Obtener detalle del pokemon particular por id

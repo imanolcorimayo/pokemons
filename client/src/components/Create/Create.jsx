@@ -113,6 +113,7 @@ function Create(props) {
 
     function another() {
         setstate({
+            ...state,
             name: "",
             lives: 0,
             strength: 0,
@@ -120,7 +121,6 @@ function Create(props) {
             defense: 0,
             height: 0,
             weight: 0,
-            types: []
         })
         setformSent(false)
     }

@@ -12,7 +12,7 @@ server.name = 'API';
 
 //midelware
 
-server.use(express.json());
+// server.use(express.json());
 
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' }));
