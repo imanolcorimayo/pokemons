@@ -11,7 +11,8 @@ function Presentation(props) {
     useEffect(() => {
         props.getPokemons()
         props.getTypes()
-    })
+        // eslint-disable-next-line
+    }, [])
 
     return (
 

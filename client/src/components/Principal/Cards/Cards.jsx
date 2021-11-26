@@ -19,7 +19,7 @@ function Cards(props) {
             {
                 props.pokemons?.map((element, index) => {
                     return (
-                        <Link className={ styles.link } to={"/Details/" + element.id}>
+                        <Link className={ styles.link } to={"/Details/pokemons/" + element.id}>
                             <div key={ index } className={ styles.divCard }>
                                 { 
                                     element.img ? (<img className={ styles.img } src={ element.img } alt="" />):

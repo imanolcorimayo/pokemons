@@ -88,6 +88,10 @@ function Create(props) {
             event.preventDefault()
             return alert("Something is wrong with your form")
         }
+        if(state.lives === 0 || state.strength === 0 || state.speed === 0 || state.defense === 0) {
+            event.preventDefault()
+            return alert("Something is wrong with your form")
+        }
         setformSent(true)
         //Decido hacerlo con un estado global para que no se reinicie cada vez que se destruye el componenete
         props.increase()

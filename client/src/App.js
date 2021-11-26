@@ -19,7 +19,7 @@ function App() {
         element={(({match}) => <Details
         id={ match.params.id }
       />)}></Route> */}
-        <Route path="/Details/:idpkm"
+        <Route path="/Details/pokemons/:idpkm"
           element={ <Details/> }></Route>
       </Routes>
     </div>
