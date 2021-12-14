@@ -19,4 +19,4 @@ El proyecto consistió en realizar una app que consuma una API de pokemons, la c
 
 Estas peticiones se realizaron del lado del backend, incluyendo en algunos casos el almacenamiento de datos en la base de datos postgresSQL.
 
-Desde el frontend se pueden crear nuevos pokemons y se aplican diversos filtrados y un paginado de la lista, entre otras funcionalidades.
+Desde el frontend se pueden crear nuevos pokemons, se aplican diversos filtrados y un paginado de la lista, entre otras funcionalidades.
